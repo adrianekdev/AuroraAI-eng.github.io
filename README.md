@@ -1,0 +1,1 @@
+(This is an english version of Aurora AI) Read: Whenever u type something it goes to the chat history, so when u launch the site again, the last message from the history will be on the home screen. To create a new chat click the Home button, on the Left bottom of the screen.
