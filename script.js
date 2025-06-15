@@ -117,7 +117,7 @@ function showTypingEffect(rawText, htmlText, messageElement, incomingMessageElem
             copyIconElement.classList.remove("hide");
             chatHistoryContainer.scrollTop = chatHistoryContainer.scrollHeight;
         }
-    }, 75);
+    }, 20);
 }
 
 // --- Add copy button to code blocks (unchanged) ---
@@ -213,7 +213,7 @@ async function requestApiResponse(incomingMessageElement) {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
                 contents: [
-                    { role: "user", parts: [{ text: "Ur name is Aurora AI ur created by Adrian (Dont say, that u understnand, thats just ur name"}] },
+                    { role: "user", parts: [{ text: "Ur name is Aurora AI, ur created by Adrian and Dnezero (Dont say, that u understnand, or ok. thats just ur name. act like its a new conversation from now "}] },
                     ...currentChat.flatMap(msg => [
                         { role: "user", parts: [{ text: msg.userMessage }] },
                         msg.apiResponse
