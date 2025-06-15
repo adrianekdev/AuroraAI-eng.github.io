@@ -1,111 +1,164 @@
-<!DOCTYPE html>
-<html lang="en">
+    <!DOCTYPE html>
+    <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="style.css">
-    <title>Aurora AI</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <link rel="stylesheet" href="style.css">
+        <title>Aurora AI</title>
+        <style>
+            .prompt-row {
+                display: flex;
+                align-items: center;
+                width: 100%;
+                margin-top: 2rem;
+            }
 
-<body>
+            .hidden-dashes {
+                display: none;
+            }
 
-    <nav class="navbar">
-        <h3 class="navbar__logo">Aurora AI</h3>
-        <button class="navbar__button" id="themeToggler"><i class='bx bx-sun'></i></button>
-    </nav>
+            .prompt__form-button {
+                margin-left: 2rem;
+                width: 48px;
+                height: 48px;
+                border-radius: 50%;
+                border: none;
+                background: #afb9b4;
+                color: #222;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.5rem;
+                cursor: pointer;
+                transition: background 0.2s;
+            }
 
-    <header class="header">
-        <div class="header__title">
-            <h1>Welcome, Dev.</h1>
-            <h2>How can i help u?</h2>
-        </div>
-        <div class="suggests">
-            <div class="suggests__item">
-                <p class="suggests__item-text">
-                    Help me identify a bug in my code.
-                </p>
-                <div class="suggests__item-icon">
-                    <i class='bx bx-stopwatch'></i>
+            .prompt__form-button:hover {
+                background: #34cfa3;
+            }
+
+            .prompt-input {
+                flex: 1 1 auto;
+                min-height: 40px;
+                max-height: 120px;
+                resize: none;
+                padding: 0.5rem;
+                border: none;
+                border-radius: 6px;
+                font-size: 1rem;
+                background: #333;
+                color: #fff;
+                box-sizing: border-box;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <nav class="navbar">
+            <div class="navbar__container">
+                <div class="navbar__logo-group">
+                    <img src="assets/aurora-logo.svg" alt="Aurora AI Logo" class="navbar__logo-img" />
+                    <span class="navbar__logo-text">Aurora AI</span>
+                </div>
+                <button class="navbar__button" id="themeToggler"><i class='bx bx-sun'></i></button>
+            </div>
+        </nav>
+
+        <header class="header">
+            <div class="header__title">
+                <h1>Welcome, Dev.</h1>
+                <h2>How can i help u?</h2>
+            </div>
+            <div class="suggests">
+                <div class="suggests__item">
+                    <p class="suggests__item-text">
+                        Help me identify a bug in my code.
+                    </p>
+                    <div class="suggests__item-icon">
+                        <i class='bx bx-stopwatch'></i>
+                    </div>
+                </div>
+                <div class="suggests__item">
+                    <p class="suggests__item-text">
+                        Help me program a script.
+                    </p>
+                    <div class="suggests__item-icon">
+                        <i class='bx bx-edit-alt'></i>
+                    </div>
+                </div>
+                <div class="suggests__item">
+                    <p class="suggests__item-text">
+                        Help me learn a new programming language.
+                    </p>
+                    <div class="suggests__item-icon">
+                        <i class='bx bx-compass'></i>
+                    </div>
+                </div>
+                <div class="suggests__item">
+                    <p class="suggests__item-text">
+                        Help me with my code that i programmed.
+                    </p>
+                    <div class="suggests__item-icon">
+                        <i class='bx bx-wrench'></i>
+                    </div>
                 </div>
             </div>
-            <div class="suggests__item">
-                <p class="suggests__item-text">
-                    Help me program a script.
-                </p>
-                <div class="suggests__item-icon">
-                    <i class='bx bx-edit-alt'></i>
-                </div>
-            </div>
-            <div class="suggests__item">
-                <p class="suggests__item-text">
-                    Help me learn a new programming language.
-                </p>
-                <div class="suggests__item-icon">
-                    <i class='bx bx-compass'></i>
-                </div>
-            </div>
-            <div class="suggests__item">
-                <p class="suggests__item-text">
-                    Help me with my code that i programmed.
-                </p>
-                <div class="suggests__item-icon">
-                    <i class='bx bx-wrench'></i>
-                </div>
-            </div>
-        </div>
-    </header>
+        </header>
 
-    <section class="chats"></section>
+        <section class="chats">
+            <!-- chat messages here -->
+        </section>
 
-    <section class="prompt">
-        <form action="#" class="prompt__form" novalidate>
-            <div class="prompt__input-wrapper">
-                <input type="text" placeholder="Type ur request to Aurora AI" class="prompt__form-input" required>
-                <button class="prompt__form-button" id="sendButton">
-                    <i class='bx bx-send'></i>
+        <section class="prompt">
+            <form action="#" class="prompt__form" novalidate>
+                <div class="prompt__input-wrapper">
+                    <input type="text" placeholder="Type ur request to Aurora AI" class="prompt__form-input" required>
+                    <button class="prompt__form-button" id="sendButton">
+                        <i class='bx bx-send'></i>
+                    </button>
+                    <button class="prompt__form-button" id="deleteButton">
+                        <i class='bx bx-trash'></i>
+                    </button>
+                </div>
+            </form>
+            <p class="prompt__disclaim">
+                Aurora AI, created by Adrian.
+            </p>
+        </section>
+
+        <aside class="sidebar">
+            <div class="sidebar__top">
+                <button class="sidebar__btn" id="homeBtn" title="Home Page">
+                    <i class='bx bx-home'></i>
                 </button>
-                <button class="prompt__form-button" id="deleteButton">
-                    <i class='bx bx-trash'></i>
+            </div>
+            <div class="sidebar__middle">
+                <div class="sidebar__history-label">History</div>
+                <ul class="sidebar__history" id="chatHistoryList"></ul>
+            </div>
+            <div class="sidebar__bottom">
+                <button class="sidebar__btn" id="settingsBtn" title="Settings">
+                    <i class='bx bx-cog'></i>
                 </button>
             </div>
-        </form>
-        <p class="prompt__disclaim">
-            Aurora AI, created by Adrian.
-        </p>
-    </section>
+        </aside>
 
-    <aside class="sidebar">
-        <div class="sidebar__top">
-            <button class="sidebar__btn" id="homeBtn" title="Home Page">
-                <i class='bx bx-home'></i>
-            </button>
-        </div>
-        <div class="sidebar__middle">
-            <div class="sidebar__history-label">History</div>
-            <ul class="sidebar__history" id="chatHistoryList"></ul>
-        </div>
-        <div class="sidebar__bottom">
-            <button class="sidebar__btn" id="settingsBtn" title="Settings">
-                <i class='bx bx-cog'></i>
-            </button>
-        </div>
-    </aside>
 
-    <div id="settingsModal" class="modal hide">
-        <div class="modal__content">
-            <span id="closeSettingsModal" class="modal__close">&times;</span>
-            <h2>Settings</h2>
-            <button id="toggleThemeBtn">Toggle Theme</button>
-            <button id="clearHistoryBtn">Clear Chat History</button>
+
+        <div id="settingsModal" class="modal hide">
+            <div class="modal__content">
+                <span id="closeSettingsModal" class="modal__close">&times;</span>
+                <h2>Settings</h2>
+                <button id="toggleThemeBtn">Toggle Theme</button>
+                <button id="clearHistoryBtn">Clear Chat History</button>
+            </div>
         </div>
-    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-    <script src="script.js"></script>
-</body>
-
-</html>
+        <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+        <script src="script.js"></script>
+    </html>
