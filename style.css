@@ -69,9 +69,30 @@ body.hide-header .header{
     padding: 1rem 2rem;
 }
 
+.navbar__logo-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem; /* space between logo and text */
+}
+
 .navbar__logo{
     color: var(--text-secondary-color);
     font-weight: 600;
+}
+
+.navbar__logo-img {
+  height: 40px;      /* Adjust as needed */
+  width: auto;
+  border-radius: 8px; /* Optional: rounded corners */
+  object-fit: contain;
+}
+
+.navbar__logo-text {
+  color: var(--text-secondary-color);
+  font-weight: 600;
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  font-family: 'Inter', sans-serif; /* Explicitly set the font here */
 }
 
 .navbar__button{
@@ -179,11 +200,13 @@ body.hide-header .header{
     resize: none;
     font-size: 1rem;
     color: var(--text-color);
-    padding: 1rem 1.75rem;
+    padding: 1rem 8rem 1rem 1.75rem; /* Increased padding-right from 7rem to 8rem */
     border-radius: 100px;
     background: var(--secondary-color);
     transition: background 0.3s ease;
 }
+
+
 
 .prompt__form-input:focus{
     background: var(--focus-color);
@@ -239,12 +262,13 @@ body.hide-header .header{
     margin-top: 1rem;
 }
 
-.chats{
-    padding: 2rem 1rem 10rem;
+.chats {
+    padding: 2rem 1rem 10rem; /* <--- TUTAJ! padding-bottom: 10rem; */
     max-height: 100%;
     overflow-y: auto;
-    scrollbar-color: #999 transparent;
+    /* ... inne style ... */
 }
+
 
 .chats .message--incoming{
     margin-top: 1.5rem;
@@ -517,7 +541,9 @@ blockquote{
     transition: background 0.2s;
     border-radius: 6px;
     text-align: center;
-    word-break: break-all;
+    word-break: normal;      /* or remove this line */
+    overflow-wrap: anywhere; /* allows wrapping at spaces or when needed */
+    white-space: normal;     /* ensures normal wrapping */
 }
 
 .sidebar__history li:hover {
@@ -602,18 +628,16 @@ body {
   display: flex;
 }
 .modal__content {
-  background: #181c24;
+  background: #222;
   color: #fff;
-  border-radius: 16px;
-  padding: 2.5rem 2rem 2rem 2rem;
-  min-width: 320px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  gap: 1.5rem;
-  animation: modalPopIn 0.25s cubic-bezier(.4,2,.6,1) both;
+  border-radius: 10px;
+  padding: 1rem 1.5rem;
+  width: 300px;
+  max-width: 90vw;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+  font-size: 0.95rem;
+  /* Shift to the right */
+  transform: translateX(60px); /* Adjust 60px as needed */
 }
 @keyframes modalPopIn {
   from { transform: translateY(40px) scale(0.95); opacity: 0; }
@@ -663,3 +687,23 @@ body {
 
 }    padding: 1.2rem 0.7rem 1.5rem 0.7rem;    min-width: 90vw;    font-size: 1.1rem;
   }
+  
+  /* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
